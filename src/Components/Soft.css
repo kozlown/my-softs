@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Aldrich');
+
+.Soft {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-left: calc(12.5% - 150px);
+    margin-right: calc(12.5% - 150px);
+    margin-top: 100px;
+    background-color: #222222;
+    display: inline-block;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.Soft .img {
+    transition: 0.5s;
+    margin-left: 60px;
+    margin-top: 40px;
+    width: 180px;
+    height: 180px;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.Soft .img:hover {
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 220px;
+    height: 220px;
+}
+
+.Soft .text {
+    font-family: 'Aldrich', serif;
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
+    height: 20px;
+}
