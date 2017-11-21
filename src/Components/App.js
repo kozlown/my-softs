@@ -16,9 +16,12 @@ class App extends Component {
   }
 
   getSofts() {
+    console.info(softs
+      .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
+      .map((soft, index) => (<Soft {...soft} key={index} />)))
     return softs
-      .filter((soft) => soft.name.match(new RegExp(this.state.search, 'i')))
-      .map((soft) => (<Soft {...soft} />))
+      .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
+      .map((soft, index) => (<Soft {...soft} key={index} />))
   }
 
   onSearch(event) {
@@ -36,7 +39,9 @@ class App extends Component {
           </a>
           <SearchBar onChange={this.onSearch} placeholder={'Search a soft...'} />
         </header>
-        { this.getSofts() }
+        <div id='Softs'>
+          { this.getSofts() }
+        </div>
       </div>
     );
   }
