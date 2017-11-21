@@ -10,7 +10,13 @@
 .MiniSoft {
     height: 30px;
     display: inline-block;
-    padding: 20px;
+    padding: 10px 50px 10px 10px;
+    margin: 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    position: relative;
+    background-color: #333333;
 }
 
 .MiniSoft .text {
@@ -25,4 +31,12 @@
     width: 30px;
     height: 30px;
     background-size: contain;
+}
+
+.MiniSoft .delete {
+    cursor: pointer;
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    color: #222222;
 }

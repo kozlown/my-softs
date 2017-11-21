@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FontAwesome from 'react-fontawesome'
 import './MiniSoft.css'
 
 class Soft extends Component {
@@ -26,11 +27,17 @@ class Soft extends Component {
     }
 
     return (
-      <div className='MiniSoft' onClick={this.deleteSoft}>
+      <div className='MiniSoft'>
         <div className='img' style={imageStyle} />
         <div className='text'>
           { this.props.soft.name }
         </div>
+        <FontAwesome
+          onClick={this.deleteSoft}
+          className='delete'
+          name='times'
+          size='2x'
+        />
       </div>
     );
   }
