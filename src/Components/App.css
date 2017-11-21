@@ -12,6 +12,11 @@
   height: 150px;
   padding: 20px;
   color: white;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  position: fixed;
 }
 
 .App-title {
@@ -28,8 +33,17 @@
 }
 
 #github-ribbon {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   border: 0;
+}
+
+#Softs {
+  position: absolute;
+  top: 190px;
+  left: 0px;
+  width: 100%;
+  padding-bottom: 75px;
+  text-align: left;
 }
