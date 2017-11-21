@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import softs from '../Softs/softs'
 import SearchBar from './SearchBar'
 import Soft from './Soft'
+import MiniSoft from './MiniSoft'
 import './App.css'
 
 class App extends Component {
@@ -33,6 +34,17 @@ class App extends Component {
       })
   }
 
+  getMiniSofts() {
+    return this.state.added
+      .map(soft => {
+        const softProps = {
+          soft,
+          deleteSoft: this.deleteSoft
+        }
+        return (<MiniSoft {...softProps} />)
+      })
+  }
+
   addSoft(softToAdd) {
     this.setState({
       added: this.state.added.concat([softToAdd])
@@ -55,6 +67,9 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
+          <div id='MiniSofts'>
+            { this.getMiniSofts() }
+          </div>
           <a href='https://github.com/kozlown/my-softs' id='github-ribbon'>
             <img src='img/forkme.png' alt='Fork me on GitHub' />
           </a>

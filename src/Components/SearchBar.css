@@ -1,7 +1,7 @@
 .SearchBar {
     position: relative;
     left: calc(50% - 250px);
-    top: 50px;
+    top: 10px;
     width: 500px;
     height: 40px;
 }

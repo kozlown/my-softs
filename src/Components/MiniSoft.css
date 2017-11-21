@@ -1,0 +1,27 @@
+#MiniSofts {
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+}
+
+.MiniSoft {
+    height: 30px;
+    display: inline-block;
+    padding: 20px;
+}
+
+.MiniSoft .text {
+    display: inline-block;
+    bottom: 8px;
+    position: relative;
+    margin-left: 5px;
+}
+
+.MiniSoft .img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+}
