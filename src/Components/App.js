@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import softs from '../Softs/softs.json'
+import softs from '../Softs/softs'
 import SearchBar from './SearchBar'
 import Soft from './Soft'
 import './App.css'
@@ -16,9 +16,9 @@ class App extends Component {
   }
 
   getSofts() {
-    console.info(softs
-      .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
-      .map((soft, index) => (<Soft {...soft} key={index} />)))
+    console.info(softs[0].script({
+      version: softs[0].version
+    }))
     return softs
       .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
       .map((soft, index) => (<Soft {...soft} key={index} />))
