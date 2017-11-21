@@ -18,7 +18,6 @@ class Soft extends Component {
           { this.props.name }
         </div>
         <div className="img" style={this.state.style}>
-
         </div>
       </div>
     );
