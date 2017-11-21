@@ -1,7 +1,7 @@
 const jetbrainsToolbox = {
   name: 'JetBrains Toolbox',
   picture: 'jetbrains-toolbox.png',
-  versions: ['1.6.2914'],
+  versions: ['1.6.2914', '1.5.2871'],
   script: ({ version }) => `
       wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-${version}.tar.gz
       tar zxvf jetbrains-toolbox-${version}.tar.gz

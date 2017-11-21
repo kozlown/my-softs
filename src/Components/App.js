@@ -9,19 +9,40 @@ class App extends Component {
     super(props)
 
     this.state = {
-      search: ''
+      search: '',
+      added: []
     }
 
     this.onSearch = this.onSearch.bind(this)
+    this.addSoft = this.addSoft.bind(this)
+    this.deleteSoft = this.deleteSoft.bind(this)
   }
 
   getSofts() {
-    console.info(softs[0].script({
-      version: softs[0].version
-    }))
     return softs
       .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
-      .map((soft, index) => (<Soft {...soft} key={index} />))
+      .map(soft => {
+        const added = this.state.added.some(added => added.name === soft.name)
+        const softProps = {
+          soft,
+          added,
+          addSoft: this.addSoft,
+          deleteSoft: this.deleteSoft
+        }
+        return (<Soft {...softProps} />)
+      })
+  }
+
+  addSoft(softToAdd) {
+    this.setState({
+      added: this.state.added.concat([softToAdd])
+    })
+  }
+
+  deleteSoft(softToDelete) {
+    this.setState({
+      added: this.state.added.filter(soft => soft.name !== softToDelete.name)
+    })
   }
 
   onSearch(event) {
@@ -32,10 +53,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <a href="https://github.com/kozlown/my-softs" id="github-ribbon">
-            <img src="img/forkme.png" alt="Fork me on GitHub" />
+      <div className='App'>
+        <header className='App-header'>
+          <a href='https://github.com/kozlown/my-softs' id='github-ribbon'>
+            <img src='img/forkme.png' alt='Fork me on GitHub' />
           </a>
           <SearchBar onChange={this.onSearch} placeholder={'Search a soft...'} />
         </header>
