@@ -32,7 +32,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <a href="https://github.com/kozlown/my-softs" id="github-ribbon">
-            <img src="/img/forkme.png" alt="Fork me on GitHub" />
+            <img src="img/forkme.png" alt="Fork me on GitHub" />
           </a>
           <SearchBar onChange={this.onSearch} placeholder={'Search a soft...'} />
         </header>
