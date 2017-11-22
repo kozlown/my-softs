@@ -7,10 +7,10 @@
   -moz-border-radius: 2px;
   border-radius: 2px;
   position: relative;
-  background-color: #333333;
+  background-color: rgb(84,84,84);
   width: calc(100% - 50px);
   text-align: left;
-  color: #898989;
+  color: black;
 }
 
 .MiniSoft .text {
