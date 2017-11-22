@@ -4,12 +4,10 @@ class Generator {
   }
 
   * generate(softs) {
-    softs.forEach(({ script, version }) => {
-      yield script({
-        version,
-        os: this.os
-      })
-    })
+    yield * softs.map(({ script, version }) => script({
+      version,
+      os: this.os
+    }))
   }
 }
 

@@ -4,6 +4,8 @@ import SearchBar from './SearchBar'
 import Soft from './Soft'
 import MiniSoft from './MiniSoft'
 import FontAwesome from 'react-fontawesome'
+import FileSaver from 'file-saver'
+import Generator from '../Generator'
 import './App.css'
 
 class App extends Component {
@@ -12,12 +14,14 @@ class App extends Component {
 
     this.state = {
       search: '',
+      os: 'ubuntu-xenial',
       added: []
     }
 
     this.onSearch = this.onSearch.bind(this)
     this.addSoft = this.addSoft.bind(this)
     this.deleteSoft = this.deleteSoft.bind(this)
+    this.generate = this.generate.bind(this)
   }
 
   getSofts() {
@@ -64,6 +68,16 @@ class App extends Component {
     })
   }
 
+  generate() {
+    const generator = new Generator(this.state.os)
+    let final = ''
+    for (let script of generator.generate(this.state.added)) {
+      final += script
+    }
+    const blob = new Blob([final], {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(blob, "hello world.txt");
+  }
+
   render() {
     let miniSofts = this.getMiniSofts()
     if (miniSofts.length === 0) {
@@ -74,10 +88,16 @@ class App extends Component {
           name='thermometer-empty'
           size='2x'
         />
-        <span style={{ 'padding-left': '10px' }}>
+        <span style={{ paddingLeft: '10px' }}>
           No softs added, click on a soft to add it...
         </span>
       </div>
+    } else {
+      miniSofts = [
+        <button id='generate' onClick={this.generate}>
+          Generate
+        </button>
+      ].concat(miniSofts)
     }
 
     return (

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://kozlown.github.io/my-softs",
   "dependencies": {
+    "file-saver": "^1.3.3",
     "gh-pages": "^1.1.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
