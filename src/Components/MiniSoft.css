@@ -1,22 +1,16 @@
-#MiniSofts {
-    width: 100%;
-    height: 50px;
-    text-align: left;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-
 .MiniSoft {
-    height: 30px;
-    display: inline-block;
-    padding: 10px 50px 10px 10px;
-    margin: 10px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    position: relative;
-    background-color: #333333;
+  height: auto;
+  display: inline-block;
+  padding: 10px 10px 10px 10px;
+  margin: 15px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  position: relative;
+  background-color: #333333;
+  width: calc(100% - 50px);
+  text-align: left;
+  color: #898989;
 }
 
 .MiniSoft .text {
@@ -39,4 +33,38 @@
     position: absolute;
     right: 10px;
     color: #222222;
+}
+
+.MiniSoft select {
+  border: none;
+  font-size: 12px;
+  height: 28px;
+  width: calc(100% + 10px);
+  background: transparent;
+  padding-left: 5px;
+  color: black;
+}
+
+.MiniSoft .Version {
+  margin-bottom: 5px;
+  font-size: 12px;
+  display: inline-block;
+  position: relative;
+  bottom: 8px;
+  color: black;
+}
+
+.MiniSoft .select-container {
+  background: url(https://image.flaticon.com/icons/png/512/60/60995.png) no-repeat right center;
+  border: 1px solid black;
+  border-radius: 5px;
+  -webkit-background-size: 20px;
+  background-size: 15px;
+  background-position-x: calc(100% - 5px);
+  width: calc(100% - 70px);
+  height: 28px;
+  margin-top: 10px;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 9px;
 }

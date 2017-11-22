@@ -3,6 +3,7 @@ import softs from '../Softs/softs'
 import SearchBar from './SearchBar'
 import Soft from './Soft'
 import MiniSoft from './MiniSoft'
+import FontAwesome from 'react-fontawesome'
 import './App.css'
 
 class App extends Component {
@@ -64,12 +65,24 @@ class App extends Component {
   }
 
   render() {
+    let miniSofts = this.getMiniSofts()
+    if (miniSofts.length === 0) {
+      miniSofts = <div id='NoSofts'>
+        <FontAwesome
+          onClick={this.deleteSoft}
+          className='delete'
+          name='thermometer-empty'
+          size='2x'
+        />
+        <span style={{ 'padding-left': '10px' }}>
+          No softs added, click on a soft to add it...
+        </span>
+      </div>
+    }
+
     return (
       <div className='App'>
         <header className='App-header'>
-          <div id='MiniSofts'>
-            { this.getMiniSofts() }
-          </div>
           <a href='https://github.com/kozlown/my-softs' id='github-ribbon'>
             <img src='img/forkme.png' alt='Fork me on GitHub' />
           </a>
@@ -77,6 +90,9 @@ class App extends Component {
         </header>
         <div id='Softs'>
           { this.getSofts() }
+        </div>
+        <div id='MiniSofts'>
+          { miniSofts }
         </div>
       </div>
     );

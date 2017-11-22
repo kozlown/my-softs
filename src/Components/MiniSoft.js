@@ -38,6 +38,16 @@ class Soft extends Component {
           name='times'
           size='2x'
         />
+        <div>
+          <div className='Version'>
+            Version
+          </div>
+          <div className='select-container'>
+            <select>
+              { this.getVersions() }
+            </select>
+          </div>
+        </div>
       </div>
     );
   }
