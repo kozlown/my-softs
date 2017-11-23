@@ -5,6 +5,7 @@ import Soft from './Soft'
 import MiniSoft from './MiniSoft'
 import FontAwesome from 'react-fontawesome'
 import FileSaver from 'file-saver'
+import _ from 'lodash'
 import Generator from '../Generator'
 import './App.css'
 
@@ -22,6 +23,7 @@ class App extends Component {
     this.addSoft = this.addSoft.bind(this)
     this.deleteSoft = this.deleteSoft.bind(this)
     this.generate = this.generate.bind(this)
+    this.setVersion = this.setVersion.bind(this)
   }
 
   getSofts() {
@@ -44,10 +46,22 @@ class App extends Component {
       .map(soft => {
         const softProps = {
           soft,
-          deleteSoft: this.deleteSoft
+          deleteSoft: this.deleteSoft,
+          setVersion: this.setVersion
         }
         return (<MiniSoft {...softProps} />)
       })
+  }
+
+  setVersion(softToChange, version) {
+    this.setState({
+      added: this.state.added.map(soft => {
+        if (soft.name === softToChange.name) {
+          soft.version = version
+        }
+        return soft
+      })
+    })
   }
 
   addSoft(softToAdd) {
@@ -75,7 +89,7 @@ class App extends Component {
       final += script
     }
     const blob = new Blob([final], {type: "text/plain;charset=utf-8"});
-    FileSaver.saveAs(blob, "hello world.txt");
+    FileSaver.saveAs(blob, "my-softs.sh");
   }
 
   render() {

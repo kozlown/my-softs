@@ -8,6 +8,11 @@ class Soft extends Component {
 
     this.getVersions = this.getVersions.bind(this)
     this.deleteSoft = this.deleteSoft.bind(this)
+    this.onVersionChange = this.onVersionChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.setVersion(this.props.soft, this.props.soft.versions[0])
   }
 
   deleteSoft() {
@@ -19,6 +24,10 @@ class Soft extends Component {
       return this.props.soft.versions.map(version => (<option value={version}>{version}</option>))
     }
     return undefined
+  }
+
+  onVersionChange(event) {
+    this.props.setVersion(this.props.soft, event.target.value)
   }
 
   render() {
@@ -43,7 +52,7 @@ class Soft extends Component {
             Version
           </div>
           <div className='select-container'>
-            <select>
+            <select onChange={this.onVersionChange}>
               { this.getVersions() }
             </select>
           </div>
