@@ -1,16 +1,12 @@
 const git = {
   name: 'Git',
   picture: 'git.png',
-  versions: ['1.6.2914', '1.5.2871'],
+  versions: ['latest'],
   script: ({ version, os }) => {
     switch (os) {
       case 'ubuntu-xenial':
         return `
-wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-${version}.tar.gz
-tar zxvf jetbrains-toolbox-${version}.tar.gz
-mv jetbrains-toolbox-${version} /opt/
-rm ./jetbrains-toolbox-${version}.tar.gz
-ln -s /opt/jetbrains-toolbox-${version}/jetbrains-toolbox /usr/bin/jetbrains-toolbox
+apt install git
 `
       default:
         throw new Error ('Invalid os')
