@@ -1,16 +1,12 @@
 const nvm = {
   name: 'Nvm',
   picture: 'nvm.png',
-  versions: ['1.6.2914', '1.5.2871'],
+  versions: ['0.33.6', '0.33.5', '0.33.4', '0.33.3', '0.33.2', '0.33.1', '0.33.0'],
   script: ({ version, os }) => {
     switch (os) {
       case 'ubuntu-xenial':
         return `
-wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-${version}.tar.gz
-tar zxvf jetbrains-toolbox-${version}.tar.gz
-mv jetbrains-toolbox-${version} /opt/
-rm ./jetbrains-toolbox-${version}.tar.gz
-ln -s /opt/jetbrains-toolbox-${version}/jetbrains-toolbox /usr/bin/jetbrains-toolbox
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v${version}/install.sh | bash
 `
       default:
         throw new Error ('Invalid os')
