@@ -5,7 +5,6 @@ import Soft from './Soft'
 import MiniSoft from './MiniSoft'
 import FontAwesome from 'react-fontawesome'
 import FileSaver from 'file-saver'
-import _ from 'lodash'
 import Generator from '../Generator'
 import './App.css'
 
@@ -84,7 +83,7 @@ class App extends Component {
 
   generate() {
     const generator = new Generator(this.state.os)
-    let final = ''
+    let final = `#!/bin/bash`
     for (let script of generator.generate(this.state.added)) {
       final += script
     }
