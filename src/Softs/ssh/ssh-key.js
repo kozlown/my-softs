@@ -1,10 +1,13 @@
 const sshKey = {
   name: 'SSH Key',
   picture: 'ssh-key.png',
-  versions: [],
+  versions: [{
+    name: 'latest',
+    allowedOs: ['Ubuntu 16.04']
+  }],
   script: ({ version, os }) => {
     switch (os) {
-      case 'ubuntu-xenial':
+      case 'Ubuntu 16.04':
         return `
 ssh_email=
 while [ -z $ssh_email ]

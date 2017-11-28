@@ -1,10 +1,13 @@
 const git = {
   name: 'Git',
   picture: 'git.png',
-  versions: ['latest'],
+  versions: [{
+    name: 'latest',
+    allowedOs: ['Ubuntu 16.04']
+  }],
   script: ({ version, os }) => {
     switch (os) {
-      case 'ubuntu-xenial':
+      case 'Ubuntu 16.04':
         return `
 apt install git
 `

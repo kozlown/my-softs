@@ -15,13 +15,13 @@ const mySoft = {
   versions: ['1.6.2914', '1.5.2871'], // all available versions
   script: ({ version, os }) => { // function which will generate the shell script depending of soft version and os
     switch (os) {
-      case 'ubuntu-xenial':
+      case 'Ubuntu 16.04':
         return `
-wget https://my-soft.com/download/my-soft-${version}.tar.gz
-tar zxvf my-soft-${version}.tar.gz
-mv my-soft-${version} /opt/
-rm ./my-soft-${version}.tar.gz
-ln -s /opt/my-soft-${version}/my-soft /usr/bin/my-soft
+wget https://my-soft.com/download/my-soft-${version.name}.tar.gz
+tar zxvf my-soft-${version.name}.tar.gz
+mv my-soft-${version.name} /opt/
+rm ./my-soft-${version.name}.tar.gz
+ln -s /opt/my-soft-${version.name}/my-soft /usr/bin/my-soft
 `
       default:
         throw new Error ('Invalid os')

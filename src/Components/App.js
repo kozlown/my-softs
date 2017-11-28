@@ -14,7 +14,9 @@ class App extends Component {
 
     this.state = {
       search: '',
-      os: 'ubuntu-xenial',
+      os: {
+        name: 'Ubuntu 16.04'
+      },
       added: []
     }
 
@@ -23,11 +25,13 @@ class App extends Component {
     this.deleteSoft = this.deleteSoft.bind(this)
     this.generate = this.generate.bind(this)
     this.setVersion = this.setVersion.bind(this)
+    this.handleSelectOs = this.handleSelectOs.bind(this)
   }
 
   getSofts() {
     return softs
       .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
+      .filter(soft => soft.versions.some(version => version.allowedOs.some(os => os === this.state.os.name)))
       .map(soft => {
         const added = this.state.added.some(added => added.name === soft.name)
         const softProps = {
@@ -81,6 +85,12 @@ class App extends Component {
     })
   }
 
+  handleSelectOs(os) {
+    this.setState({
+      os
+    })
+  }
+
   generate() {
     const generator = new Generator(this.state.os)
     let final = `#!/bin/bash`
@@ -119,7 +129,7 @@ class App extends Component {
           <a href='https://github.com/kozlown/my-softs' id='github-ribbon'>
             <img src='img/forkme.png' alt='Fork me on GitHub' />
           </a>
-          <SearchBar onChange={this.onSearch} placeholder={'Search a soft...'} />
+          <SearchBar onChange={this.onSearch} placeholder={'Search a soft...'} handleSelectOs={this.handleSelectOs}/>
         </header>
         <div id='Softs'>
           { this.getSofts() }

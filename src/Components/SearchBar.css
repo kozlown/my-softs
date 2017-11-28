@@ -13,7 +13,7 @@
     font-family: 'Aldrich', serif;
     font-size: 30px;
     padding-top: 7px;
-    width: 100%;
+    width: calc(100% - 30px);
     height: 100%;
     border: none;
     transition: 0.2s;
@@ -26,4 +26,10 @@
     background-color: #FFFFFF;
     caret-color: #898989;
     color: #222222;
+}
+
+.SearchBar .RoundSelect {
+    position: absolute;
+    right: 35px;
+    top: -5px;
 }

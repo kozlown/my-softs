@@ -21,13 +21,14 @@ class Soft extends Component {
 
   getVersions() {
     if (this.props.soft.versions !== undefined) {
-      return this.props.soft.versions.map(version => (<option value={version}>{version}</option>))
+      return this.props.soft.versions.map(version => (<option value={version.name}>{version.name}</option>))
     }
     return undefined
   }
 
   onVersionChange(event) {
-    this.props.setVersion(this.props.soft, event.target.value)
+    const version = this.props.soft.versions.find(version => version.name === event.target.value)
+    this.props.setVersion(this.props.soft, version)
   }
 
   render() {

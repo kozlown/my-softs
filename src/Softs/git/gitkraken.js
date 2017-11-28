@@ -1,10 +1,13 @@
 const gitkraken = {
   name: 'GitKraken',
   picture: 'gitkraken.png',
-  versions: ['latest'],
+  versions: [{
+    name: 'latest',
+    allowedOs: ['Ubuntu 16.04']
+  }],
   script: ({ version, os }) => {
     switch (os) {
-      case 'ubuntu-xenial':
+      case 'Ubuntu 16.04':
         return `
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 dpkg -i gitkraken-amd64.deb

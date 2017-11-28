@@ -1,0 +1,27 @@
+.RoundSelect {
+  width: 190px;
+}
+
+.RoundSelect .Choice {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  opacity: 1;
+  user-select: none;
+}
+
+.RoundSelect .Choice:hover {
+  background-color: gray;
+}
+
+.RoundSelect .Choice.first {
+  background-color: black;
+  color: white;
+  opacity: 1;
+}
