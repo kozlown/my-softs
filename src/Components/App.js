@@ -5,6 +5,8 @@ import Soft from './Soft'
 import MiniSoft from './MiniSoft'
 import FontAwesome from 'react-fontawesome'
 import FileSaver from 'file-saver'
+import CircularProgressbar from 'react-circular-progressbar'
+import classNames from 'classnames'
 import Generator from '../Generator'
 import './App.css'
 
@@ -17,7 +19,13 @@ class App extends Component {
       os: {
         name: 'Ubuntu 16.04'
       },
-      added: []
+      added: [],
+      cache: null,
+      goBack: {
+        percentage: 100,
+        enter: false,
+        active: false
+      }
     }
 
     this.onSearch = this.onSearch.bind(this)
@@ -26,6 +34,9 @@ class App extends Component {
     this.generate = this.generate.bind(this)
     this.setVersion = this.setVersion.bind(this)
     this.handleSelectOs = this.handleSelectOs.bind(this)
+    this.deleteAllSofts = this.deleteAllSofts.bind(this)
+    this.cancelDeleteAllSofts = this.cancelDeleteAllSofts.bind(this)
+    this.hideGoBack = this.hideGoBack.bind(this)
   }
 
   getSofts() {
@@ -42,6 +53,63 @@ class App extends Component {
         }
         return (<Soft {...softProps} />)
       })
+  }
+
+  hideGoBack() {
+    clearInterval(this.state.goBack.interval)
+    this.setState({
+      goBack: {
+        ...this.state.goBack,
+        active: false
+      }
+    })
+    setTimeout(() => {
+      this.setState({
+        goBack: {
+          ...this.state.goBack,
+          percentage: 100,
+          enter: false
+        }
+      })
+    }, 500)
+  }
+
+  deleteAllSofts() {
+    this.setState({
+      added: [],
+      goBack: {
+        ...this.state.goBack,
+        enter: true
+      },
+      cache: this.state.added
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          goBack: {
+            ...this.state.goBack,
+            active: true
+          }
+        }, () => {
+          const myInterval = setInterval(() => {
+            if (this.state.goBack.percentage <= 0) {
+              this.hideGoBack()
+            }
+            this.setState({
+              goBack: {
+                ...this.state.goBack,
+                percentage: this.state.goBack.percentage - 20
+              }
+            })
+          }, 1000)
+          this.setState({
+            goBack: {
+              ...this.state.goBack,
+              interval: myInterval
+            }
+          })
+        })
+      }, 100)
+    })
   }
 
   getMiniSofts() {
@@ -91,6 +159,13 @@ class App extends Component {
     })
   }
 
+  cancelDeleteAllSofts() {
+    this.setState({
+      added: this.state.cache
+    })
+    this.hideGoBack()
+  }
+
   generate() {
     const generator = new Generator(this.state.os)
     let final = `#!/bin/bash`
@@ -119,9 +194,17 @@ class App extends Component {
       miniSofts = [
         <button id='generate' onClick={this.generate}>
           Generate
-        </button>
+        </button>,
+        <FontAwesome
+          onClick={this.deleteAllSofts}
+          className='deleteAll'
+          name='trash'
+          size='2x'
+        />
       ].concat(miniSofts)
     }
+
+    const textForPercentage = percentage => ''
 
     return (
       <div className='App'>
@@ -135,6 +218,23 @@ class App extends Component {
           { this.getSofts() }
         </div>
         <div id='MiniSofts'>
+          <div id='cancel' onClick={this.cancelDeleteAllSofts} className={classNames({
+            active: this.state.goBack.active,
+            enter: this.state.goBack.enter
+          })}>
+            <div className='progress'>
+              <CircularProgressbar
+                className="CircularProgressbar-inverted"
+                background
+                backgroundPadding={5}
+                strokeWidth={15}
+                percentage={this.state.goBack.percentage}
+                textForPercentage={textForPercentage} />
+            </div>
+            <p>
+              Cancel
+            </p>
+          </div>
           { miniSofts }
         </div>
       </div>

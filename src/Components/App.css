@@ -42,6 +42,14 @@
   text-align: center;
 }
 
+#MiniSofts .deleteAll {
+  color: white;
+  cursor: pointer;
+  top: 7px;
+  left: 18px;
+  position: relative;
+}
+
 #NoSofts {
   background-color: #222222;
   color: white;
@@ -56,4 +64,61 @@
   border: 2px solid black;
   border-radius: 2px;
   cursor: pointer;
+}
+
+#cancel {
+  position: relative;
+  z-index: 3;
+  display: none;
+  width: 150px;
+  height: 50px;
+  margin-bottom: 20px;
+  transition: display 0s, right .5s;
+  right: -300px;
+  background-color: black;
+  padding: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#cancel.enter {
+  display: block;
+}
+
+#cancel.active {
+  right: -65px;
+}
+
+#cancel p {
+  display: inline-block;
+  right: 25px;
+  position: absolute;
+  top: 12px;
+  user-select: none;
+  color: #333333;
+  font-weight: bold;
+}
+
+#cancel .progress {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 20px;
+}
+
+#cancel .CircularProgressbar-inverted .CircularProgressbar-background {
+  fill: transparent;
+}
+
+#cancel .CircularProgressbar-inverted .CircularProgressbar-trail {
+  stroke: transparent;
+}
+
+#cancel .CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: #333333;
+  transition: stroke-dashoffset 0.5s ease 0s;
+  stroke-width: 10px;
 }
