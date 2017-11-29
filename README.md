@@ -12,7 +12,13 @@ Watch below the installer template:
 const mySoft = {
   name: 'My Soft',
   picture: 'my-soft.png', // icon which will be displayed on the website
-  versions: ['1.6.2914', '1.5.2871'], // all available versions
+  versions: [{
+    name: '1.6.2914',
+    allowedOs: ['Ubuntu 16.04']
+  }, {
+    name: '1.5.2871',
+    allowedOs: ['Ubuntu 16.04']
+  }], // all available versions
   script: ({ version, os }) => { // function which will generate the shell script depending of soft version and os
     switch (os) {
       case 'Ubuntu 16.04':
