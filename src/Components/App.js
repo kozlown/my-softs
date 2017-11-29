@@ -16,9 +16,7 @@ class App extends Component {
 
     this.state = {
       search: '',
-      os: {
-        name: 'Ubuntu 16.04'
-      },
+      os: 'Ubuntu 16.04',
       added: [],
       cache: null,
       goBack: {
@@ -42,7 +40,7 @@ class App extends Component {
   getSofts() {
     return softs
       .filter(soft => soft.name.match(new RegExp(this.state.search, 'i')))
-      .filter(soft => soft.versions.some(version => version.allowedOs.some(os => os === this.state.os.name)))
+      .filter(soft => soft.versions.some(version => version.allowedOs.some(os => os === this.state.os)))
       .map(soft => {
         const added = this.state.added.some(added => added.name === soft.name)
         const softProps = {
@@ -114,6 +112,7 @@ class App extends Component {
 
   getMiniSofts() {
     return this.state.added
+      .filter(soft => soft.versions.some(version => version.allowedOs.some(os => os === this.state.os)))
       .map(soft => {
         const softProps = {
           soft,
@@ -169,7 +168,9 @@ class App extends Component {
   generate() {
     const generator = new Generator(this.state.os)
     let final = `#!/bin/bash`
-    for (let script of generator.generate(this.state.added)) {
+    const softs = this.state.added
+      .filter(soft => soft.versions.some(version => version.allowedOs.some(os => os === this.state.os)))
+    for (let script of generator.generate(softs)) {
       final += script
     }
     const blob = new Blob([final], {type: "text/plain;charset=utf-8"});

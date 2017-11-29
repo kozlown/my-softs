@@ -5,12 +5,8 @@ import './SearchBar.css'
 class SearchBar extends Component {
   render() {
     const osChoices = [
-      {
-        name: "Ubuntu 16.04"
-      },
-      {
-        name: "Arch Linux 2017.11.01"
-      }
+      'Ubuntu 16.04',
+      'Arch Linux 2017.11.01'
     ]
 
     return (

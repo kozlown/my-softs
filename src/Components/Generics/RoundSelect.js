@@ -26,7 +26,7 @@ class RoundSelect extends Component {
       return <div className={classNames({
         Choice: true,
         first: false
-      })} onClick={() => this.select(choice)}>{choice.name}</div>
+      })} onClick={() => this.select(choice)}>{choice}</div>
     }
     const mouseEnterHandler = () => {
       this.setState({
@@ -38,12 +38,12 @@ class RoundSelect extends Component {
       first: true
     })}
     onClick={() => this.select(choice)}
-    onMouseEnter={mouseEnterHandler}>{choice.name}</div>
+    onMouseEnter={mouseEnterHandler}>{choice}</div>
   }
 
   getChoices() {
     return this.props.choices.reduce((result, choice) => {
-      if (choice.name === this.state.choice.name) {
+      if (choice === this.state.choice) {
         return _.concat([this.getChoiceComponent(choice, true)], result)
       }
       if (this.state.open) {
