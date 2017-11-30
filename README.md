@@ -2,7 +2,7 @@ My-softs is a softs installer generator for Linux. :sparkles:
 It generates a shell script installing the softs you previously selected.
 You can try it [here](https://kozlown.github.io/my-softs/) ! :running:
 
-# Contribute
+## Contribute
 
 You can (please do so ! :bowtie:) contribute to this project mostly by adding/modifying installers
 which are located in the `/src/Softs` folder.
@@ -37,5 +37,7 @@ ln -s /opt/my-soft-${version.name}/my-soft /usr/bin/my-soft
 
 export default mySoft
 ```
+
+## Licence
 
 MIT © [Nigel Kozlowski](https://github.com/kozlown)
