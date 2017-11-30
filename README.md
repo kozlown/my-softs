@@ -1,6 +1,15 @@
+# My-softs
+
 My-softs is a softs installer generator for Linux. :sparkles:
 It generates a shell script installing the softs you previously selected.
 You can try it [here](https://kozlown.github.io/my-softs/) ! :running:
+
+<p align="center">
+  <a target="_blank" href="https://yarnpkg.com" title="Yarn"><img src="https://img.shields.io/badge/Yarn-100%25-green.svg"></a>
+  <a target="_blank" href="https://reactjs.org/" title="Yarn"><img src="https://img.shields.io/badge/React-100%25-green.svg"></a>
+  <a target="_blank" href="http://makeapullrequest.com" title="PRs Welcome"><img src="https://img.shields.io/badge/Pull%20Requests-Welcomed-green.svg"></a>
+  <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
+</p>
 
 ## Contribute
 
