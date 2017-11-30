@@ -37,3 +37,5 @@ ln -s /opt/my-soft-${version.name}/my-soft /usr/bin/my-soft
 
 export default mySoft
 ```
+
+MIT © [Nigel Kozlowski](https://github.com/kozlown)
